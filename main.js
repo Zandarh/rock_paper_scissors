@@ -1,3 +1,6 @@
+let playerScore = 0;
+let computerScore = 0;
+
 // Function generates 3 random numbers and binds each to a variable so rock, paper and scissors can be played
 function getComputerChoice() {
     let computerDraw = Math.floor(Math.random( )* 3) + 1;
@@ -5,90 +8,137 @@ function getComputerChoice() {
     let computerChoice;
 
     if(computerDraw === 1){
-        computerChoice = "rock";
+        computerChoice = "Rock";
     }
     else if(computerDraw === 2){
-        computerChoice = "paper";
+        computerChoice = "Paper";
     }
     else{
-        computerChoice = "scissors";
+        computerChoice = "Scissors";
     }
     return computerChoice;
 }
 
-/* Function gets only rock, paper and scissors from user
-and converts it to lowercase for easy comparison with the computer's choice
-*/
-let playerSelection = () => {
-    let request;
-    let lowerCaseRequest;
-    do{
-        request = prompt("What is your choice?");
-        
-        lowerCaseRequest = request.toLowerCase();
+
+/**let playerSelection = (choice) => {
+    let playerChoice = choice.toLowerCase();
+    return playerChoice;
+};**/
+
+const btn = document.querySelectorAll("button");
+const container = document.querySelector(".container");
+
+btn.forEach((button) => {
+    button.addEventListener("click", () => {
+        let choice = button.value
+       game(choice);
+    });
+});
+
+function createDiv(playerGame, computerGame){
+
+
+    if(playerGame === computerGame){
+        const div = document.createElement('div');
+        const content = document.createElement('h3');
+        content.textContent = "You Tie!"
+        const para = document.createElement("p");
+        para.textContent = `${playerGame} ties with ${computerGame}`;
+        div.appendChild(content);
+        const scores = document.createElement('p');
+        scores.textContent = `Player: ${playerScore} Computer: ${computerScore}`;
+        div.appendChild(para);
+        div.appendChild(scores);
+        container.replaceChild(div, container.firstElementChild);
+
     }
-    while(!(lowerCaseRequest === "rock" || lowerCaseRequest === "paper" || lowerCaseRequest === "scissors"));
+    else if(playerGame === "Rock" && computerGame === "Scissors" || playerGame === "Scissors" && computerGame == "Paper" || playerGame == "Paper" && computerGame === "Rock") {
 
-    return lowerCaseRequest;
-};
+        playerScore++;
+        const div = document.createElement('div');
+        div.setAttribute = ("id", "theresult");
+        const content = document.createElement('h3');
+        content.textContent = "You won!"
+        div.appendChild(content);
+        const para = document.createElement("p");
+        para.textContent = `${playerGame} beats ${computerGame}`;
+        const scores = document.createElement('p');
+        scores.textContent = `Player: ${playerScore} Computer: ${computerScore}`;
+        div.appendChild(content);
+        div.appendChild(para);
+        div.appendChild(scores);
+        container.replaceChild(div, container.firstElementChild);
 
-let playerScore = 0;
-let computerScore = 0;
+    }
+    else {
+        computerScore++;
+        const div = document.createElement('div');
+        div.setAttribute = ("id", "theresult");
+        const content = document.createElement('h3');
+        content.textContent = "You Lost!"
+        div.appendChild(content);
+        const para = document.createElement("p");
+        para.textContent = `${computerGame} beats ${playerGame}`;
+        const scores = document.createElement('p');
+        scores.textContent = `Player: ${playerScore} Computer: ${computerScore}`;
+        div.appendChild(content);
+        div.appendChild(para);
+        div.appendChild(scores);
+        container.replaceChild(div, container.firstElementChild);
 
-let playerGame;
-let computerGame;
+    }
+}
+function giveResult(playerScore, computerScore){
 
-function game(){
+    if(playerScore > computerScore){
+        const div = document.createElement("div");
+        const content = document.createElement('h3');
+        content.textContent = "You Won!";
+        div.appendChild(content);
+        const h3 = document.createElement('h4');
+        h3.textContent = "Final Scores";
+        div.appendChild(h3);
+        const scores = document.createElement('p');
+        scores.textContent = `Player: ${playerScore} Computer: ${computerScore}`;
+        div.appendChild(scores);
+        const anchor = document.createElement("a");
+        anchor.textContent = "Play Again";
+        anchor.href = "index.html";
+        anchor.setAttribute('class', "anchor");
+        div.appendChild(anchor);
+        document.body.appendChild(div);
 
+    }
+    else{
+        const div = document.createElement("div");
+        const content = document.createElement('h3');
+        content.textContent = "You Lost!";
+        div.appendChild(content);
+        const h3 = document.createElement('h4');
+        h3.textContent = "Final Scores";
+        div.appendChild(h3);
+        const scores = document.createElement('p');
+        scores.textContent = `Player: ${playerScore} Computer: ${computerScore}`;
+        div.appendChild(scores);
+        const anchor = document.createElement("a");
+        anchor.textContent = "Play Again";
+        anchor.href = "index.html";
+        anchor.setAttribute('class', "anchor");
+        div.appendChild(anchor);
+        document.body.appendChild(div);
+    }
+}
+function game(playerGame){
     /* looping as long as there are rounds to play.
     so that after any player reaches 5points, the game ends
     */
-   let rounds = true;
-    while (rounds){
+    
+        computerGame = getComputerChoice();
+        createDiv(playerGame, computerGame);
+        
+        if(playerScore == 5 || computerScore == 5){
+            giveResult(playerScore, computerScore);
+        }
 
-        let tieChecker = true;
-
-        // To loop as long as there is a tie
-        while(tieChecker){
-
-            playerGame = playerSelection();
-            computerGame = getComputerChoice();
-
-            if(playerGame === computerGame){
-                console.log("You tie, play again");
-            }
-            else {
-                //beaking out of the loop if there's no tie
-                tieChecker = false;
-            }
-    }
-            if(playerGame === "rock" && computerGame === "scissors" || playerGame === "scissors" && computerGame == "paper" || playerGame == "paper" && computerGame === "rock"){
-
-                playerScore++;
-                console.log("You win")
-                console.log(`Your score ${playerScore} and computer scores ${computerScore}`);
-            }
-            else {
-                computerScore++;
-                console.log("You lose");
-                console.log(`Your score ${playerScore} and computer scores ${computerScore}`);
-            }
-            /*When no more rounds to play.
-            */
-            if(playerScore === 5 || computerScore === 5)
-                rounds = false;
-    }
-
-
-if(playerScore > computerScore){
-    console.log(`Final scores`);
-    console.log(`Player: ${playerScore} Computer: ${computerScore}`);
-    console.log("You win")
+    
 }
-else{
-    console.log(`Final scores`);
-    console.log(`Player: ${playerScore} Computer: ${computerScore}`);
-    console.log("Computer wins")
-}
-}
-game();
