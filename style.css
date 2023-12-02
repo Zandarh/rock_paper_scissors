@@ -121,7 +121,13 @@ div.theScore{
     font-size: 20px;
 }
 footer{
+    position: fixed;
+    width: 100%;
+    bottom: 0;
     display: block;
-    height: 80px;
-    color: white;
+    text-align: center;
+    color: #fefae0;
+}
+footer a{
+    color: #fefae0;
 }
