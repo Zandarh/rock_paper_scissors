@@ -1,20 +1,127 @@
-.body{
+*{
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body{
     display: flex;
     flex-direction: column;
+    background-color: #283618;
+    gap: 20px;
+    justify-content: center;
+    min-height: 100%;
+    margin: 0;
 }
 .heading{
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    background-color: #606c38;
+    padding: 15px;
 }
-#theresult, #theresult h4, #theresult p{
+.heading h1{
+    font-size: 1.7em;
+    color: #fefae0;
+}
+#theresult, #theresult h3, 
+#theresult p,
+.theSpanDiv h3{
     text-align: center;
+    color: #fefae0;
+}
+#theresult h3{
+    margin: 10px;
+    font-size: 30px;
+}
+#theresult p{
+    font-size: 20px;
 }
 .container{
+    flex: 1;
     display: flex;
     flex-direction: column;
-    align-items: center;    
+    align-items: center;  
+    gap: 30px;  
 }
 .thebuttonDiv{
     display: flex;
-    gap: 10px;
+    gap: 25px;
     justify-content: center;
+}
+button{
+    appearance: none;
+    cursor: pointer;
+    width: 20%;
+    font-size: 12px;
+    background-color: inherit;
+    color: #bc6c25;
+    border-radius: 10px;
+    box-shadow: 1px 1px 1px 10px #283618;
+    padding-bottom: 3px;
+    text-transform: uppercase;
+}
+button img{
+    width: 70px;
+    height: 70px;
+    border-radius: 10px;
+}
+.theSpanDiv{
+    display: flex;
+    flex-direction: column;
+}
+div.start{
+    display: flex;
+    justify-content: space-around;
+    gap: 30px;
+}
+div.start h3{
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+div.theScore{
+    display: flex;
+    justify-content: space-between;
+    gap: 60px;
+}
+.myModal{
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.123);
+    display: none;
+    align-items: center;
+}
+.modalContent{
+    background-color: #606c38;
+    margin: 50% auto;
+    padding: 20px;
+    width: 80%;
+}
+.theModal{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    align-items: center;
+}
+.theModal h3{
+    font-size: 40px;
+    color: #bc6c25;
+}
+.theModal a{
+    border: 1px, blue solid;
+    background-color: #bc6c25;
+    padding: 5px;
+    color: #283618;
+    border-radius: 2px;
+    text-decoration: none;
+    font-size: 20px;
+}
+footer{
+    display: block;
+    height: 80px;
+    color: white;
 }

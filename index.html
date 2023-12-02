@@ -7,28 +7,47 @@
     <link rel="stylesheet" href="style.css">
     
     <style>
-        .anchor{
-            border: 1px, blue solid;
-            background-color: blue;
-            padding: 5px;
+        
+        .theImage{
+            width: 50px;
+            height: 50px;
+            margin-bottom: 10px;
+            border-radius: 50%;
         }
     </style>
 </head>
 <body>
-    <h1 class="heading">ROCK PAPER SCISSORS</h1>
+    <div class="heading">
+        <h1>ROCK PAPER SCISSORS</h1>
+    </div>
     <div class="container">
         <div id="theresult">
-            <h3>Make a Choice</h3>
-            <p>First to 5 points win the game</p>
+            <h3>Pick One Option</h3>
+            <p>First to 5 points wins the game</p>
+        </div>
+        <div class="theSpanDiv">
+            <div class="start">
+                <h3>?</h3>
+                <h3>?</h3>
+            </div>
+            <div class="theScore">
+                <h3 class="playerScore">Player: 0</h3>
+                <h3 class="computerScore">Computer: 0</h3>
+            </div>
         </div>
         <div class="thebuttonDiv">
-            <button id="rock" value="Rock">Rock</button>
-            <button id="paper" value="Paper">Paper</button>
-            <button id="scissors" value="Scissors">Scissors</button>
+            <button id="rock" value="Rock"><img src="img/rock.jpeg">Rock</button>
+            <button id="paper" value="Paper"><img src="img/paper.jpeg">Paper</button>
+            <button id="scissors" value="Scissors"><img src="img/scissor.jpeg">Scissors</button>
         </div>
     </div>
-    
-    
+    <div id="modal" class="myModal">
+        <div class="modalContent">
+        </div>
+    </div>
+    <footer>
+        <p>Copyright@2023<a href="https://github.com/zandarh">Zandarh</a></p>
+    </footer>
     <script src="main.js"></script>
 
 </body>

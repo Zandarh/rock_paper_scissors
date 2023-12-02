@@ -19,12 +19,6 @@ function getComputerChoice() {
     return computerChoice;
 }
 
-
-/**let playerSelection = (choice) => {
-    let playerChoice = choice.toLowerCase();
-    return playerChoice;
-};**/
-
 const btn = document.querySelectorAll("button");
 const container = document.querySelector(".container");
 
@@ -36,19 +30,30 @@ btn.forEach((button) => {
 });
 
 function createDiv(playerGame, computerGame){
+    const scoreSheet = document.querySelector(".theScore");
 
 
     if(playerGame === computerGame){
         const div = document.createElement('div');
+        div.setAttribute("id", "theresult");
         const content = document.createElement('h3');
         content.textContent = "You Tie!"
         const para = document.createElement("p");
         para.textContent = `${playerGame} ties with ${computerGame}`;
         div.appendChild(content);
-        const scores = document.createElement('p');
-        scores.textContent = `Player: ${playerScore} Computer: ${computerScore}`;
         div.appendChild(para);
-        div.appendChild(scores);
+
+        const thePlayerScore = document.createElement('h3');
+        thePlayerScore.textContent = `Player: ${playerScore}`;
+        thePlayerScore.setAttribute("class", "playerScore")
+
+        const theComputerScore = document.createElement('h3');
+        theComputerScore.textContent = `Computer: ${computerScore}`;
+        theComputerScore.setAttribute("class", "computerScore")
+        
+        scoreSheet.replaceChild(thePlayerScore, scoreSheet.firstElementChild);
+        scoreSheet.replaceChild(theComputerScore, scoreSheet.lastElementChild);
+
         container.replaceChild(div, container.firstElementChild);
 
     }
@@ -56,42 +61,133 @@ function createDiv(playerGame, computerGame){
 
         playerScore++;
         const div = document.createElement('div');
-        div.setAttribute = ("id", "theresult");
+        div.setAttribute("id", "theresult");
         const content = document.createElement('h3');
         content.textContent = "You won!"
         div.appendChild(content);
         const para = document.createElement("p");
         para.textContent = `${playerGame} beats ${computerGame}`;
-        const scores = document.createElement('p');
-        scores.textContent = `Player: ${playerScore} Computer: ${computerScore}`;
         div.appendChild(content);
         div.appendChild(para);
-        div.appendChild(scores);
+
+        const thePlayerScore = document.createElement('h3');
+        thePlayerScore.textContent = `Player: ${playerScore}`;
+        thePlayerScore.setAttribute("class", "playerScore")
+
+        const theComputerScore = document.createElement('h3');
+        theComputerScore.textContent = `Computer: ${computerScore}`;
+        theComputerScore.setAttribute("class", "computerScore")
+        
+        scoreSheet.replaceChild(thePlayerScore, scoreSheet.firstElementChild);
+        scoreSheet.replaceChild(theComputerScore, scoreSheet.lastElementChild);
+
         container.replaceChild(div, container.firstElementChild);
 
     }
     else {
         computerScore++;
         const div = document.createElement('div');
-        div.setAttribute = ("id", "theresult");
+        div.setAttribute("id", "theresult");
         const content = document.createElement('h3');
         content.textContent = "You Lost!"
         div.appendChild(content);
         const para = document.createElement("p");
         para.textContent = `${computerGame} beats ${playerGame}`;
-        const scores = document.createElement('p');
-        scores.textContent = `Player: ${playerScore} Computer: ${computerScore}`;
         div.appendChild(content);
         div.appendChild(para);
-        div.appendChild(scores);
+
+        const thePlayerScore = document.createElement('h3');
+        thePlayerScore.textContent = `Player: ${playerScore}`;
+        thePlayerScore.setAttribute("class", "playerScore")
+
+        const theComputerScore = document.createElement('h3');
+        theComputerScore.textContent = `Computer: ${computerScore}`;
+        theComputerScore.setAttribute("class", "computerScore")
+        
+        scoreSheet.replaceChild(thePlayerScore, scoreSheet.firstElementChild);
+        scoreSheet.replaceChild(theComputerScore, scoreSheet.lastElementChild);
+
         container.replaceChild(div, container.firstElementChild);
 
     }
 }
+function createImage(playerGame, computerGame){
+    if(playerGame == "Rock"){
+        const image = document.createElement('img');
+        const thePlay = document.querySelector(".start");
+
+        image.setAttribute("class", "theImage");
+        image.setAttribute("src", "img/rock.jpeg");
+
+        thePlay.replaceChild(image, thePlay.firstElementChild);
+
+
+    }
+    if(playerGame == "Paper"){
+        const image = document.createElement('img');
+        const thePlay = document.querySelector(".start");
+
+        image.setAttribute("class", "theImage");
+        image.setAttribute("src", "img/paper.jpeg");
+
+        thePlay.replaceChild(image, thePlay.firstElementChild);
+
+
+    }
+    if(playerGame == "Scissors"){
+        const image = document.createElement('img');
+        const thePlay = document.querySelector(".start");
+
+        image.setAttribute("class", "theImage");
+        image.setAttribute("src", "img/scissor.jpeg");
+
+        thePlay.replaceChild(image, thePlay.firstElementChild);
+
+
+    }
+    if(computerGame == "Rock"){
+        const image = document.createElement('img');
+        const thePlay = document.querySelector(".start");
+
+        image.setAttribute("class", "theImage");
+        image.setAttribute("src", "img/rock.jpeg");
+
+        thePlay.replaceChild(image, thePlay.lastElementChild);
+
+
+    }
+    if(computerGame == "Paper"){
+        const image = document.createElement('img');
+        const thePlay = document.querySelector(".start");
+
+        image.setAttribute("class", "theImage");
+        image.setAttribute("src", "img/paper.jpeg");
+
+        thePlay.replaceChild(image, thePlay.lastElementChild);
+
+
+    }
+    if(computerGame == "Scissors"){
+        const image = document.createElement('img');
+        const thePlay = document.querySelector(".start");
+
+        image.setAttribute("class", "theImage");
+        image.setAttribute("src", "img/scissor.jpeg");
+
+        thePlay.replaceChild(image, thePlay.lastElementChild);
+
+
+    }
+}
 function giveResult(playerScore, computerScore){
+    const modal = document.querySelector("#modal");
+    const modalContent = document.querySelector(".modalContent");
+
 
     if(playerScore > computerScore){
+        modal.style.display = "flex";
         const div = document.createElement("div");
+        div.setAttribute("class", "theModal");
         const content = document.createElement('h3');
         content.textContent = "You Won!";
         div.appendChild(content);
@@ -104,13 +200,15 @@ function giveResult(playerScore, computerScore){
         const anchor = document.createElement("a");
         anchor.textContent = "Play Again";
         anchor.href = "index.html";
-        anchor.setAttribute('class', "anchor");
         div.appendChild(anchor);
-        document.body.appendChild(div);
+        modalContent.appendChild(div);
 
     }
     else{
+        modal.style.display = "flex";
         const div = document.createElement("div");
+        div.setAttribute("class", "theModal");
+
         const content = document.createElement('h3');
         content.textContent = "You Lost!";
         div.appendChild(content);
@@ -123,9 +221,8 @@ function giveResult(playerScore, computerScore){
         const anchor = document.createElement("a");
         anchor.textContent = "Play Again";
         anchor.href = "index.html";
-        anchor.setAttribute('class', "anchor");
         div.appendChild(anchor);
-        document.body.appendChild(div);
+        modalContent.appendChild(div);
     }
 }
 function game(playerGame){
@@ -134,6 +231,7 @@ function game(playerGame){
     */
     
         computerGame = getComputerChoice();
+        createImage(playerGame, computerGame);
         createDiv(playerGame, computerGame);
         
         if(playerScore == 5 || computerScore == 5){
