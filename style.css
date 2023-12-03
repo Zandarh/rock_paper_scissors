@@ -83,6 +83,17 @@ div.theScore{
     justify-content: space-between;
     gap: 60px;
 }
+.releasedScore{
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    width: 80%;
+}
+.releasedScore .playerScore,
+.releasedScore .computerScore{
+    color: #fefae0;
+    font-size: 20px;
+}
 .myModal{
     position: fixed;
     z-index: 1;
@@ -104,11 +115,11 @@ div.theScore{
 .theModal{
     display: flex;
     flex-direction: column;
-    gap: 30px;
+    gap: 20px;
     align-items: center;
 }
 .theModal h3{
-    font-size: 40px;
+    font-size: 30px;
     color: #bc6c25;
 }
 .theModal a{
@@ -119,6 +130,7 @@ div.theScore{
     border-radius: 2px;
     text-decoration: none;
     font-size: 20px;
+    border-radius: 10px;
 }
 footer{
     position: fixed;

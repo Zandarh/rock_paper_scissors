@@ -193,10 +193,24 @@ function giveResult(playerScore, computerScore){
         div.appendChild(content);
         const h3 = document.createElement('h4');
         h3.textContent = "Final Scores";
+        h3.style.color = "white";
         div.appendChild(h3);
-        const scores = document.createElement('p');
-        scores.textContent = `Player: ${playerScore} Computer: ${computerScore}`;
-        div.appendChild(scores);
+        
+        const scoreDiv = document.createElement("div");
+        scoreDiv.setAttribute("class", "releasedScore");
+
+        const thePlayerScore = document.createElement('h3');
+        thePlayerScore.textContent = `Player: ${playerScore}`;
+        thePlayerScore.setAttribute("class", "playerScore")
+
+        const theComputerScore = document.createElement('h3');
+        theComputerScore.textContent = `Computer: ${computerScore}`;
+        theComputerScore.setAttribute("class", "computerScore")
+        
+        scoreDiv.appendChild(thePlayerScore);
+        scoreDiv.appendChild(theComputerScore);
+        div.appendChild(scoreDiv);
+
         const anchor = document.createElement("a");
         anchor.textContent = "Play Again";
         anchor.href = "index.html";
@@ -214,10 +228,24 @@ function giveResult(playerScore, computerScore){
         div.appendChild(content);
         const h3 = document.createElement('h4');
         h3.textContent = "Final Scores";
+        h3.style.color = "white";
         div.appendChild(h3);
-        const scores = document.createElement('p');
-        scores.textContent = `Player: ${playerScore} Computer: ${computerScore}`;
-        div.appendChild(scores);
+
+        const scoreDiv = document.createElement("div");
+        scoreDiv.setAttribute("class", "releasedScore");
+
+        const thePlayerScore = document.createElement('h3');
+        thePlayerScore.textContent = `Player: ${playerScore}`;
+        thePlayerScore.setAttribute("class", "playerScore")
+
+        const theComputerScore = document.createElement('h3');
+        theComputerScore.textContent = `Computer: ${computerScore}`;
+        theComputerScore.setAttribute("class", "computerScore")
+        
+        scoreDiv.appendChild(thePlayerScore);
+        scoreDiv.appendChild(theComputerScore);
+        div.appendChild(scoreDiv);
+
         const anchor = document.createElement("a");
         anchor.textContent = "Play Again";
         anchor.href = "index.html";
